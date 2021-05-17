@@ -1,0 +1,20 @@
+<h1> F1 2021 TEAMS </h1>
+<ul>
+    <% var space = " "; %>  
+<% teams.forEach(function(team){ %>
+    <li> <%= team.name + space + team.base + space + team.championships %> </li>
+<% }) %>
+</ul>
+
+<form method="POST" action="/teams/add">
+    <label> Team Name </label> <br>
+    <input type="text" name ="team_name">
+    <br>
+    <label> Team Base </label> <br>
+    <input type="text" name ="team_base">
+    <br>
+    <label> Team Number of Championships </label> <br>
+    <input type="text" name ="team_championships">
+    <br> <br>
+    <input type="submit" value="Submit">
+</form>

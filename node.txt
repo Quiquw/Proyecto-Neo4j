@@ -1,0 +1,68 @@
+  CREATE (F1:Sport {name:'Formula One', teams:10, races:23})
+
+CREATE (Mercedes:Team {name:'Mercedes', base:'Brackley, United Kingdom', championships:7})
+CREATE (RedBull:Team {name:'Red Bull Racing Honda', base:'Milton Keynes, United Kingdom', championships:4})
+CREATE (McLaren:Team {name:'McLaren F1 Team', base:'Woking, United Kingdom', championships:8})
+CREATE (Ferrari:Team {name:'Scuderia Ferrari Mission', base:'Maranello, Italy', championships:16})
+CREATE (Alpine:Team {name:'Alpine F1 Team', base:'Enstone, United Kingdom', championships:2})
+CREATE (AlphaTauri:Team {name:'Scuderia AlphaTauri Honda', base:'Scuderia AlphaTauri Honda', championships:0})
+CREATE (AstonMartin:Team {name:'Aston Martin Cognizant F1 Team', base:'Silverstone, United Kingdom', championships:0})
+CREATE (AlfaRomeoRacing:Team {name:'Alfa Romeo Racing ORLEN', base:'Hinwil, Switzerland', championships:0})
+CREATE (Williams:Team {name:'Williams Racing', base:'Grove, United Kingdom', championships:9})
+CREATE (Haas:Team {name:'Uralkali Haas F1 Team', base:'Kannapolis, United States', championships:0})
+
+  CREATE
+  (Mercedes)-[:COMPETES_IN {driver_titles:[9], constructor_titles:[7]}]->(F1),
+  (RedBull)-[:COMPETES_IN {driver_titles:[4], constructor_titles:[4]}]->(F1),
+  (McLaren)-[:COMPETES_IN {driver_titles:[12], constructor_titles:[8]}]->(F1),
+  (Ferrari)-[:COMPETES_IN {driver_titles:[15], constructor_titles:[16]}]->(F1),
+  (Alpine)-[:COMPETES_IN {driver_titles:[0], constructor_titles:[0]}]->(F1),
+  (AlphaTauri)-[:COMPETES_IN {driver_titles:[0], constructor_titles:[0]}]->(F1),
+  (AstonMartin)-[:COMPETES_IN {driver_titles:[0], constructor_titles:[0]}]->(F1),
+  (AlfaRomeoRacing)-[:COMPETES_IN {driver_titles:[0], constructor_titles:[0]}]->(F1),
+  (Williams)-[:COMPETES_IN {driver_titles:[7], constructor_titles:[9]}]->(F1),
+  (Haas)-[:COMPETES_IN {driver_titles:[0], constructor_titles:[0]}]->(F1)
+
+CREATE (Hamilton:Pilot {name:'Lewis Hamilton', number:44, country:'United Kingdom'}) 
+CREATE (Bottas:Pilot {name:'Valtteri Bottas', number:77, country:'Finland'})
+CREATE (Verstappen:Pilot {name:'Max Verstappen', number:33, country:'Netherlands'})
+CREATE (Perez:Pilot {name:'Sergio Perez', number:11, country:'Mexico'})
+CREATE (Ricciardo:Pilot {name:'Daniel Ricciardo', number:3, country:'Australia'})
+CREATE (Norris:Pilot {name:'Lando Norris', number:4, country:'United Kingdom'})
+CREATE (Leclerc:Pilot {name:'Charles Leclerc', number:16, country:'Monaco'})
+CREATE (Sainz:Pilot {name:'Carlos Sainz', number:55, country:'Spain'})
+CREATE (Alonso:Pilot {name:'Fernando Alonso', number:14, country:'Spain'})
+CREATE (Ocon:Pilot {name:'Esteban Ocon', number:31, country:'France'})
+CREATE (Gasly:Pilot {name:'Pierre Gasly', number:10, country:'France'})
+CREATE (Tsunoda:Pilot {name:'Yuki Tsunoda', number:22, country:'Japan'})
+CREATE (Vettel:Pilot {name:'Sebastian Vettel', number:5, country:'Germany'})
+CREATE (Stroll:Pilot {name:'Lance Stroll', number:18, country:'Canada'})
+CREATE (Räikkönen:Pilot {name:'Kimi Räikkönen', number:7, country:'Finland'})
+CREATE (Giovinazzi:Pilot {name:'Antonio Giovinazzi', number:99, country:'Italy'})
+CREATE (Russell:Pilot {name:'George Russell', number:63, country:'United Kingdom'})
+CREATE (Latifi:Pilot {name:'Nicholas Latifi', number:6, country:'Canada'})
+CREATE (Schumacher:Pilot {name:'Mick Schumacher', number:47, country:'Germany'})
+CREATE (Mazepin:Pilot {name:'Nikita Mazepin', number:9, country:'Russia'})
+
+CREATE
+  (Hamilton)-[:DRIVES_FOR {since:[2013]}]->(Mercedes),
+  (Bottas)-[:DRIVES_FOR {since:[2017]}]->(Mercedes),
+  (Verstappen)-[:DRIVES_FOR {since:[2016]}]->(RedBull),
+  (Perez)-[:DRIVES_FOR {since:[2021]}]->(RedBull),
+  (Ricciardo)-[:DRIVES_FOR {since:[2021]}]->(McLaren),
+  (Norris)-[:DRIVES_FOR {since:[2018]}]->(McLaren),
+  (Leclerc)-[:DRIVES_FOR {since:[2019]}]->(Ferrari),
+  (Sainz)-[:DRIVES_FOR {since:[2021]}]->(Ferrari),
+  (Alonso)-[:DRIVES_FOR {since:[2021]}]->(Alpine),
+  (Ocon)-[:DRIVES_FOR {since:[2021]}]->(Alpine),
+  (Gasly)-[:DRIVES_FOR {since:[2020]}]->(AlphaTauri),
+  (Tsunoda)-[:DRIVES_FOR {since:[2020]}]->(AlphaTauri),
+  (Vettel)-[:DRIVES_FOR {since:[2021]}]->(AstonMartin),
+  (Stroll)-[:DRIVES_FOR {since:[2021]}]->(AstonMartin),
+  (Räikkönen)-[:DRIVES_FOR {since:[2019]}]->(AlfaRomeoRacing),
+  (Giovinazzi)-[:DRIVES_FOR {since:[2019]}]->(AlfaRomeoRacing),
+  (Russell)-[:DRIVES_FOR {since:[2018]}]->(Williams),
+  (Latifi)-[:DRIVES_FOR {since:[2019]}]->(Williams),
+  (Schumacher)-[:DRIVES_FOR {since:[2020]}]->(Haas),
+  (Mazepin)-[:DRIVES_FOR {since:[2021]}]->(Haas)
+;

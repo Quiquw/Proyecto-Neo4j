@@ -18,19 +18,56 @@ app.use(express.static(path.join(__dirname, 'public')));
 var driver = neo4j.driver('bolt://localhost:7687', neo4j.auth.basic('neo4j', 'SEAA'));
 var session = driver.session();
 
-app.get('/', function(req, res){
+app.get('/', function(req,res){
+    res.render('index');
+})
+
+app.get('/teams', function(req, res){
     session
-        .run('MATCH(n) RETURN n LIMIT 25')
+        .run('MATCH(n:Team) RETURN n LIMIT 25')
         .then(function(result){
+            var teamArr = [];
             result.records.forEach(function(record){
-                console.log(record._fields[0].properties);
+                teamArr.push({
+                    id: record._fields[0].identity.low,
+                    name: record._fields[0].properties.name,
+                    base: record._fields[0].properties.base,
+                    championships: record._fields[0].properties.championships
+                });
             });
-           // res.render('index');
+           res.render('teams', {
+               teams: teamArr
+           });
         })
         .catch(function(err){
             console.log(err);
         });
 });
+
+app.get('/pilots', function(req, res){
+    session
+        .run('MATCH(n:Pilot) RETURN n LIMIT 25')
+        .then(function(result){
+            var pilotArr = [];
+            result.records.forEach(function(record){
+                pilotArr.push({
+                    id: record._fields[0].identity.low,
+                    name: record._fields[0].properties.name,
+                    number: record._fields[0].properties.number,
+                    country: record._fields[0].properties.country
+
+                });
+            });
+           res.render('pilots', {
+               pilots: pilotArr
+           });
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+});
+
+app.post()
 
 app.listen(3000);
 console.log('Server Started on Port 3000');
