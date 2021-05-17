@@ -67,7 +67,25 @@ app.get('/pilots', function(req, res){
         });
 });
 
-app.post()
+app.post('/teams/add', function(req,res){
+    var name = req.body.name;
+    var base = req.body.base;
+    var championships = req.body.championships;
+
+    session
+        .run('CREATE(n:Team {name:{nameParam}, {base:{baseParam}, {championships:{championshipsParam}}) RETURN n.name', {nameParam:name, baseParam:base, championshipsParam:championships})
+        .then(function(result){
+            res.redirect('/');
+            session.close();
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+
+    
+    res.redirect('/');
+
+});
 
 app.listen(3000);
 console.log('Server Started on Port 3000');
