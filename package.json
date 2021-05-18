@@ -11,9 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "*",
+    "bootstrap": "^5.0.1",
     "ejs": "^3.1.6",
     "express": "*",
-    "body-parser": "*",
     "morgan": "*",
     "neo4j-driver": "*"
   },

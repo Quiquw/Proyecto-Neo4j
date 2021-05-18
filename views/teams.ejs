@@ -1,22 +1,130 @@
-<h1> F1 2021 TEAMS </h1>
-<ul>
-    <% var space = " "; %>  
-<% teams.forEach(function(team){ %>
-    <li> <%= team.name + space + team.base + space + team.championships %> </li>
-<% }) %>
-</ul>
+<!DOCTYPE html>
+<html>
+<title>F1 2021 TEAMS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<h3> Add TEAM </h3>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5aadddfd;">
+    <a class=" navbar-brand " href="/#">Menu</a>
+    <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarNav " aria-controls="navbarNav " aria-expanded="false " aria-label="Toggle navigation ">
+      <span class="navbar-toggler-icon "></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav ">
+        <ul class="navbar-nav ">
+            <li class="nav-item active ">
+                <a class="nav-link " href="/pilots">Pilots <span class="sr-only "></span></a>
+            </li>
+            <li class="nav-item active ">
+                <a class="nav-link " href="/teams">Teams <span class="sr-only "></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<form method="POST" action="/teams/add">
-    <label> Team Name </label> <br>
-    <input type="text" name ="team_name">
-    <br>
-    <label> Team Base </label> <br>
-    <input type="text" name ="team_base">
-    <br>
-    <label> Team Number of Championships </label> <br>
-    <input type="text" name ="team_championships">
-    <br> <br>
-    <input type="submit" value="Submit">
-</form>
+<link rel="stylesheet " href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css " integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T " crossorigin="anonymous ">
+
+
+<body>
+
+    <div class="w3-container">
+        <h1 style="text-align: center; margin-top: 1cm;"> F1 2021 TEAMS </h1>
+
+        <div class="w3-bar w3-black">
+            <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'Teams')">List Teams</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Create')">Create A New Team</button>
+        </div>
+
+        <div id="Teams" class="w3-container w3-border teams">
+            <br>
+            <h3 style="text-align: center;"> List of Teams </h3>
+            <ul>
+                <% teams.forEach(function(team){ %>
+
+                    <div class="card" style="width: 25rem; float: left; margin-block: 1cm; height:25rem">
+                        <img class="card-img-top" src="<%= team.image %>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;">
+                                <%= team.name %>
+                            </h5>
+                            <p class="card-text">
+                                <li>
+                                    Number:
+                                    <%= team.base %>
+                                </li>
+
+                                <li>
+                                    Country:
+                                    <%= team.championships %>
+                                </li>
+                            </p>
+                        </div>
+                    </div>
+                    <% }) %>
+            </ul>
+
+
+        </div>
+
+        <div id="Create" class="w3-container w3-border teams" style="display:none">
+            <br>
+            <h3 style="text-align: center;"> Create a new Pilot </h3>
+
+            <form method="POST" action="/teams/add">
+                <label> Team Name </label> <br>
+                <input type="text" name="name">
+                <br>
+                <label> Team Base </label> <br>
+                <input type="text" name="base">
+                <br>
+                <label> Team Number of Championships </label> <br>
+                <input type="text" name="championships">
+                <br>
+                <label>Url Team Image </label> <br>
+                <input type="text" name="image">
+                <br> <br>
+                <input type="submit" value="Submit" class="button" style="margin-bottom: 1cm;">
+                <br>
+            </form>
+
+        </div>
+
+    </div>
+
+    <script>
+        function openTab(evt, teams) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("teams");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+            }
+            document.getElementById(teams).style.display = "block";
+            evt.currentTarget.className += " w3-red";
+        }
+    </script>
+
+    <style>
+        input[type=text]:focus {
+            background-color: lightcoral;
+        }
+        
+        .button {
+            background-color: #ff0000;
+            color: rgb(255, 255, 255);
+            transition-duration: 0.4s;
+        }
+        
+        .button:hover {
+            background-color: #1c63fa;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+
+</body>
+
+</html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

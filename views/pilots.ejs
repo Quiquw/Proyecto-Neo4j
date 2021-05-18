@@ -1,7 +1,147 @@
-<h1> Pilots 2021 </h1>
-<ul>
-    <% var space = " "; %>  
-<% pilots.forEach(function(pilot){ %>
-    <li> <%= pilot.name + space + pilot.number + space + pilot.country %> </li>
-<% }) %>
-</ul>
+<!DOCTYPE html>
+<html>
+<title>F1 Pilots</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5aadddfd;">
+    <a class=" navbar-brand " href="/#">Menu</a>
+    <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarNav " aria-controls="navbarNav " aria-expanded="false " aria-label="Toggle navigation ">
+      <span class="navbar-toggler-icon "></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav ">
+        <ul class="navbar-nav ">
+            <li class="nav-item active ">
+                <a class="nav-link " href="/pilots">Pilots <span class="sr-only "></span></a>
+            </li>
+            <li class="nav-item active ">
+                <a class="nav-link " href="/teams">Teams <span class="sr-only "></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<link rel="stylesheet " href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css " integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T " crossorigin="anonymous ">
+
+
+<body>
+
+    <div class="w3-container">
+        <h1 style="text-align: center; margin-top: 1cm;"> F1 Pilots 2021 </h1>
+
+        <div class="w3-bar w3-black">
+            <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'Pilots')">List Pilots</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Create')">Create A New Pilot</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Add')">Add Pilot To Team</button>
+        </div>
+
+        <div id="Pilots" class="w3-container w3-border pilots">
+            <br>
+            <h3 style="text-align: center;"> List of Pilots </h3>
+            <ul>
+                <% pilots.forEach(function(pilot){ %>
+
+                    <div class="card" style="width: 25rem; float: left; margin-block: 1cm; height:36rem">
+                        <img class="card-img-top" src="<%= pilot.image %>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;">
+                                <%= pilot.name %>
+                            </h5>
+                            <p class="card-text">
+                                <li>
+                                    Number:
+                                    <%= pilot.number %>
+                                </li>
+
+                                <li>
+                                    Country:
+                                    <%= pilot.country %>
+                                </li>
+                            </p>
+                        </div>
+                    </div>
+                    <% }) %>
+            </ul>
+
+
+        </div>
+
+        <div id="Create" class="w3-container w3-border pilots" style="display:none">
+            <br>
+            <h3 style="text-align: center;"> Create a new Pilot </h3>
+
+            <form method="POST" action="/pilots/add">
+                <label> Pilot Name </label> <br>
+                <input type="text" name="name">
+                <br>
+                <label> Pilot Number </label> <br>
+                <input type="text" name="number">
+                <br>
+                <label> Pilot Country </label> <br>
+                <input type="text" name="country">
+                <br>
+                <label>Url Pilot Image </label> <br>
+                <input type="text" name="image">
+                <br> <br>
+                <input type="submit" value="Submit" class="button" style="margin-bottom: 1cm;">
+                <br>
+            </form>
+
+        </div>
+
+        <div id="Add" class="w3-container w3-border pilots">
+            <br>
+            <h3 style="text-align: center;"> Add a Pilot to a Team</h3>
+
+            <form method="POST" action="/pilots/team/add">
+                <label> Team Name </label> <br>
+                <input type="text" name="team">
+                <br>
+                <label> Pilot Name </label> <br>
+                <input type="text" name="pilot">
+                <br> <br>
+                <input type="submit" value="Submit" class="button" style="margin-bottom: 1cm;">
+                <br>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        function openTab(evt, pilotsName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("pilots");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+            }
+            document.getElementById(pilotsName).style.display = "block";
+            evt.currentTarget.className += " w3-red";
+        }
+    </script>
+
+    <style>
+        input[type=text]:focus {
+            background-color: lightcoral;
+        }
+        
+        .button {
+            background-color: #ff0000;
+            color: rgb(255, 255, 255);
+            transition-duration: 0.4s;
+        }
+        
+        .button:hover {
+            background-color: #1c63fa;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+
+</body>
+
+</html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
