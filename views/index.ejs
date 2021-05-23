@@ -28,3 +28,40 @@
         width: 50%;
     }
 </style>
+
+<script>
+    const {
+        default: Neovis
+    } = require("neovis.js");
+
+    function draw() {
+        var config = {
+            container_id: "viz",
+            server_url: "bolt://localhost:7687",
+            server_user: "neo4j",
+            server_password: "SEAA",
+            arrows: true,
+            hierarchical: true,
+
+            labels: {
+                "Pilot": {
+                    "caption": "name",
+                    "size": "pagerank",
+                    "community": "community",
+                }
+            },
+            relationships: {
+                "DRIVES_FOR": {
+                    thickness: "weight",
+                    caption: true,
+                }
+            },
+            initial_cypher: "MATCH (n:Pilot)-[r:DRIVES_FOR]->(p:Team) RETURN n,p"
+        };
+
+        viz = new Neovis.default(config);
+        viz.render();
+        console.log(viz);
+
+    }
+</script>
