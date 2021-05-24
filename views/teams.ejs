@@ -3,6 +3,7 @@
 <title>F1 2021 TEAMS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://cdn.neo4jlabs.com/neovis.js/v1.5.0/neovis.js"></script>
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5aadddfd;">
     <a class=" navbar-brand " href="/#">Menu</a>
@@ -32,6 +33,7 @@
         <div class="w3-bar w3-black">
             <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'Teams')">List Teams</button>
             <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Create')">Create A New Team</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Base')">Teams with Pilots</button>
         </div>
 
         <div id="Teams" class="w3-container w3-border teams">
@@ -85,6 +87,61 @@
                 <input type="submit" value="Submit" class="button" style="margin-bottom: 1cm;">
                 <br>
             </form>
+
+        </div>
+
+        <div id="Base" class="w3-container w3-border teams" style="display:true">
+            <br>
+            <h3 style="text-align: center;"> Pilots Related to Teams </h3>
+
+            <script>
+                function draw2() {
+                  var config = {
+                    container_id: "vizz",
+                    server_url: "bolt://localhost:7687",
+                    server_user: "neo4j",
+                    server_password: "SEAA",
+                    server_database: "formula1",
+                    arrows: true,
+                    hierarchical: true,
+                    labels: {
+                      Pilot: {
+                        caption: "name",
+                        size: "pagerank",
+                        community: "community",
+                        font: {
+                          size: 16,
+                          color: "#2503ff"
+                        }
+                      },
+                      Team: {
+                        caption: "name",
+                        size: "pagerank",
+                        community: "community",
+                        font: {
+                          size: 16,
+                          color: "#ff112b"
+                        }
+                      },
+                    },
+                    relationships: {
+                      DRIVES_FOR: {
+                        thickness: "weight",
+                        caption: true,
+                      }
+                    },
+                    initial_cypher: "MATCH p=()-[r:DRIVES_FOR]->() RETURN p",
+                  }
+            
+                  var viz = new NeoVis.default(config);
+                  viz.render();
+                };
+                
+              </script>
+            
+              <body onload="draw2()">
+                <div id="vizz" style="height: 15cm;"></div>
+              </body>
 
         </div>
 

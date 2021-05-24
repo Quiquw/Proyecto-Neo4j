@@ -1,3 +1,7 @@
+<head>
+    <title>Index F1</title>
+    <script src="https://cdn.neo4jlabs.com/neovis.js/v1.5.0/neovis.js"></script>
+  </head>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5aadddfd;">
     <a class=" navbar-brand " href="/#">Menu</a>
     <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarNav " aria-controls="navbarNav " aria-expanded="false " aria-label="Toggle navigation ">
@@ -20,6 +24,8 @@
 <h1 style="text-align: center; margin-top: 1cm;"> Proyecto Neo4j </h1>
 <br>
 <img src="https://www.motor.es/fotos-noticias/2020/12/calendario-f1-2021-202072256-1608187705_3.jpg" class="center">
+
+<h3 style="text-align: center; margin-top: 1cm;"> Representación gráfica de la Base de Datos </h3>
 <style>
     .center {
         display: block;
@@ -30,38 +36,54 @@
 </style>
 
 <script>
-    const {
-        default: Neovis
-    } = require("neovis.js");
-
     function draw() {
-        var config = {
-            container_id: "viz",
-            server_url: "bolt://localhost:7687",
-            server_user: "neo4j",
-            server_password: "SEAA",
-            arrows: true,
-            hierarchical: true,
+      var config = {
+        container_id: "viz",
+        server_url: "bolt://localhost:7687",
+        server_user: "neo4j",
+        server_password: "SEAA",
+        server_database: "formula1",
+        arrows: true,
+        hierarchical: true,
+        labels: {
+          Pilot: {
+            caption: "name",
+            size: "pagerank",
+            community: "community",
+            font: {
+              size: 16,
+              color: "#2503ff"
+            }
+          },
+          Team: {
+            caption: "name",
+            size: "pagerank",
+            community: "community",
+            font: {
+              size: 16,
+              color: "#ff112b"
+            }
+          },
+        },
+        relationships: {
+          DRIVES_FOR: {
+            thickness: "weight",
+            caption: true,
+          },
+          COMPETES_IN: {
+            thickness: "weight",
+            caption: true,
+          },
+        },
+        initial_cypher: "MATCH n=()-[]->() RETURN n",
+      }
 
-            labels: {
-                "Pilot": {
-                    "caption": "name",
-                    "size": "pagerank",
-                    "community": "community",
-                }
-            },
-            relationships: {
-                "DRIVES_FOR": {
-                    thickness: "weight",
-                    caption: true,
-                }
-            },
-            initial_cypher: "MATCH (n:Pilot)-[r:DRIVES_FOR]->(p:Team) RETURN n,p"
-        };
+      var viz = new NeoVis.default(config);
+      viz.render();
+    };
+    
+  </script>
 
-        viz = new Neovis.default(config);
-        viz.render();
-        console.log(viz);
-
-    }
-</script>
+  <body onload="draw()">
+    <div id="viz"></div>
+  </body>
