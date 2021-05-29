@@ -1,22 +1,22 @@
 <head>
-    <title>Index F1</title>
+    <title>Index Your F1</title>
     <script src="https://cdn.neo4jlabs.com/neovis.js/v1.5.0/neovis.js"></script>
 </head>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5aadddfd;">
-    <a class=" navbar-brand " href="/#">Menu</a>
+    <a class=" navbar-brand " href="/index3">Your F1 Menu</a>
     <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarNav " aria-controls="navbarNav " aria-expanded="false " aria-label="Toggle navigation ">
       <span class="navbar-toggler-icon "></span>
     </button>
     <div class="collapse navbar-collapse " id="navbarNav ">
         <ul class="navbar-nav ">
             <li class="nav-item active ">
-                <a class="nav-link " href="/pilots">Pilots <span class="sr-only "></span></a>
+                <a class="nav-link " href="/mypilots">My Pilots <span class="sr-only "></span></a>
             </li>
             <li class="nav-item active ">
-                <a class="nav-link " href="/teams">Teams <span class="sr-only "></span></a>
+                <a class="nav-link " href="/myteams">My Teams <span class="sr-only "></span></a>
             </li>
             <li class="nav-item active ">
-                <a class="nav-link " href="/index3">My F1<span class="sr-only "></span></a>
+                <a class="nav-link " href="/#">Back to main page<span class="sr-only "></span></a>
             </li>
         </ul>
     </div>
@@ -24,16 +24,16 @@
 
 <link rel="stylesheet " href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css " integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T " crossorigin="anonymous ">
 
-<h1 style="text-align: center; margin-top: 1cm;"> Proyecto Neo4j </h1>
+<h1 style="text-align: center; margin-top: 1cm;"> Your F1 </h1>
 <br>
-<img src="https://www.motor.es/fotos-noticias/2020/12/calendario-f1-2021-202072256-1608187705_3.jpg" class="center">
+<img src="https://www.formulaf1.es/wp-content/uploads/2020/12/SI202012130208_hires_jpeg_24bit_rgb_news-scaled.jpg" class="center">
 
 <br>
 <div style="text-align: center; float:left; padding-left: 10cm; ">
     <h3 style="text-align: center;"> INSERT DATA DB </h3>
 
-    <form method="POST" action="/db">
-        <label> Insertar datos default a base de datos </label> <br>
+    <form method="POST" action="/mydb">
+        <label> Insertar datos default a base de datos (Mi formula 1) </label> <br>
         <input type="submit" value="Submit" class="button" style="margin-bottom: 1cm;">
         <br>
     </form>
@@ -41,26 +41,20 @@
 <div style="text-align: center;">
     <h3 style="text-align: center;"> DELETE DB </h3>
 
-    <form method="POST" action="/elim">
-        <label> Eliminar datos de la base de datos (formula1) </label> <br>
+    <form method="POST" action="/myelim">
+        <label> Eliminar datos de la base de datos (Mi formula 1) </label> <br>
         <input type="submit" value="Submit" class="button" style="margin-bottom: 1cm;">
         <br>
     </form>
 </div>
 
-<h3 style="text-align: center; margin-top: 1cm;"> Representación gráfica de la Base de Datos (Formula 1) </h3>
+<h3 style="text-align: center; margin-top: 1cm;"> Representación gráfica de la Base de Datos (Mi Formula 1) </h3>
 <style>
     .center {
         display: block;
         margin-left: auto;
         margin-right: auto;
         width: 50%;
-    }
-    
-    .button {
-        background-color: #ff0000;
-        color: rgb(255, 255, 255);
-        transition-duration: 0.4s;
     }
 </style>
 
@@ -71,7 +65,7 @@
             server_url: "bolt://localhost:7687",
             server_user: "neo4j",
             server_password: "SEAA",
-            server_database: "formula1",
+            server_database: "myformula1",
             arrows: true,
             hierarchical: true,
             labels: {

@@ -1,4 +1,11 @@
-  CREATE (F1:Sport {name:'Formula One', teams:10, races:23})
+CREATE DATABASE formula1
+:use formula1
+MATCH (n)
+WITH n LIMIT 10000
+DETACH DELETE n
+RETURN count(*);
+
+CREATE (F1:Sport {name:'Formula One', teams:10, races:23})
 
 CREATE (Mercedes:Team {name:'Mercedes', base:'Brackley, United Kingdom', championships:7, image:'https://www.formula1.com/content/fom-website/en/teams/Mercedes/_jcr_content/logo.img.jpg/1582638425211.jpg'})
 CREATE (RedBull:Team {name:'Red Bull Racing Honda', base:'Milton Keynes, United Kingdom', championships:4, image:'https://www.formula1.com/content/fom-website/en/teams/Red-Bull-Racing/_jcr_content/logo.img.jpg/1610719164360.jpg'})

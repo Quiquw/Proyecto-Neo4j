@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
-<title>F1 2021 Pilots</title>
+<title>Your F1 Pilots</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://cdn.neo4jlabs.com/neovis.js/v1.5.0/neovis.js"></script>
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5aadddfd;">
-    <a class=" navbar-brand " href="/#">Menu</a>
+    <a class=" navbar-brand " href="/index3">My F1 Menu</a>
     <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarNav " aria-controls="navbarNav " aria-expanded="false " aria-label="Toggle navigation ">
       <span class="navbar-toggler-icon "></span>
     </button>
     <div class="collapse navbar-collapse " id="navbarNav ">
         <ul class="navbar-nav ">
             <li class="nav-item active ">
-                <a class="nav-link " href="/pilots">Pilots <span class="sr-only "></span></a>
+                <a class="nav-link " href="/mypilots">My Pilots <span class="sr-only "></span></a>
             </li>
             <li class="nav-item active ">
-                <a class="nav-link " href="/teams">Teams <span class="sr-only "></span></a>
+                <a class="nav-link " href="/myteams">My Teams <span class="sr-only "></span></a>
+            </li>
+            <li class="nav-item active ">
+                <a class="nav-link " href="/#">Return to main menu <span class="sr-only "></span></a>
             </li>
         </ul>
     </div>
@@ -24,19 +27,20 @@
 
 <link rel="stylesheet " href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css " integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T " crossorigin="anonymous ">
 
+
 <body>
 
     <div class="w3-container">
-        <h1 style="text-align: center; margin-top: 1cm;"> F1 Pilots 2021 </h1>
+        <h1 style="text-align: center; margin-top: 1cm;"> My F1 Pilots</h1>
 
         <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'FPilots')">List Pilots</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'FCreate')">Create A New Pilot</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'FPtoT')">Add Pilot To Team</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'FD')">Delete Pilot</button>
+            <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'CPilots')">List Pilots</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'CCreate')">Create A New Pilot</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'CPtoT')">Add Pilot To Team</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'CDMP')">Delete Pilot</button>
         </div>
 
-        <div id="FPilots" class="w3-container w3-border pilots">
+        <div id="CPilots" class="w3-container w3-border pilots">
             <br>
             <h3 style="text-align: center;"> List of Pilots </h3>
             <ul>
@@ -67,11 +71,11 @@
 
         </div>
 
-        <div id="FCreate" class="w3-container w3-border pilots" style="display:none">
+        <div id="CCreate" class="w3-container w3-border pilots" style="display:none">
             <br>
             <h3 style="text-align: center;"> Create a new Pilot </h3>
 
-            <form method="POST" action="/pilots/add">
+            <form method="POST" action="/mypilots/add">
                 <label> Pilot Name </label> <br>
                 <input type="text" name="name">
                 <br>
@@ -90,11 +94,11 @@
 
         </div>
 
-        <div id="FPtoT" class="w3-container w3-border pilots" style="display:none">
+        <div id="CPtoT" class="w3-container w3-border pilots" style="display:none">
             <br>
             <h3 style="text-align: center;"> Add a Pilot to a Team</h3>
 
-            <form method="POST" action="/pilots/team/add">
+            <form method="POST" action="/mypilots/team/add">
                 <label> Team Name </label> <br>
                 <input type="text" name="team">
                 <br>
@@ -107,11 +111,11 @@
 
         </div>
 
-        <div id="FD" class="w3-container w3-border pilots" style="display:none">
+        <div id="CDMP" class="w3-container w3-border pilots" style="display:none">
             <br>
             <h3 style="text-align: center;"> Delete Pilot </h3>
 
-            <form method="POST" action="/pilots/delete">
+            <form method="POST" action="/mypilots/delete">
                 <label> Pilot Name </label> <br>
                 <input type="text" name="name"> <br>
                 <br>

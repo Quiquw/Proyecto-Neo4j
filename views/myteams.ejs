@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
-<title>F1 2021 TEAMS</title>
+<title>Your F1 Teams</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://cdn.neo4jlabs.com/neovis.js/v1.5.0/neovis.js"></script>
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5aadddfd;">
-    <a class=" navbar-brand " href="/#">Menu</a>
+    <a class=" navbar-brand " href="/index3">My F1 Menu</a>
     <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarNav " aria-controls="navbarNav " aria-expanded="false " aria-label="Toggle navigation ">
       <span class="navbar-toggler-icon "></span>
     </button>
     <div class="collapse navbar-collapse " id="navbarNav ">
         <ul class="navbar-nav ">
             <li class="nav-item active ">
-                <a class="nav-link " href="/pilots">Pilots <span class="sr-only "></span></a>
+                <a class="nav-link " href="/mypilots">My Pilots <span class="sr-only "></span></a>
             </li>
             <li class="nav-item active ">
-                <a class="nav-link " href="/teams">Teams <span class="sr-only "></span></a>
+                <a class="nav-link " href="/myteams">My Teams <span class="sr-only "></span></a>
+            </li>
+            <li class="nav-item active ">
+                <a class="nav-link " href="/#">Return to main menu <span class="sr-only "></span></a>
             </li>
         </ul>
     </div>
@@ -25,19 +28,20 @@
 <link rel="stylesheet " href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css " integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T " crossorigin="anonymous ">
 
 
+
 <body>
 
     <div class="w3-container">
-        <h1 style="text-align: center; margin-top: 1cm;"> F1 2021 TEAMS </h1>
+        <h1 style="text-align: center; margin-top: 1cm;"> Your F1 TEAMS </h1>
 
         <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'TTeams')">List Teams</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'TCreate')">Create A New Team</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'TBase')">Teams with Pilots</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'TDT')">Delete Team</button>
+            <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'QTeams')">List Teams</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'QCreate')">Create A New Team</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'QBase')">Teams with Pilots</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'QDTT')">Delete Team</button>
         </div>
 
-        <div id="TTeams" class="w3-container w3-border teams">
+        <div id="QTeams" class="w3-container w3-border teams">
             <br>
             <h3 style="text-align: center;"> List of Teams </h3>
             <ul>
@@ -68,11 +72,11 @@
 
         </div>
 
-        <div id="TCreate" class="w3-container w3-border teams" style="display:none">
+        <div id="QCreate" class="w3-container w3-border teams" style="display:none">
             <br>
             <h3 style="text-align: center;"> Create a new Pilot </h3>
 
-            <form method="POST" action="/teams/add">
+            <form method="POST" action="/myteams/add">
                 <label> Team Name </label> <br>
                 <input type="text" name="name">
                 <br>
@@ -91,7 +95,7 @@
 
         </div>
 
-        <div id="TBase" class="w3-container w3-border teams" style="display:true">
+        <div id="QBase" class="w3-container w3-border teams" style="display:true">
             <br>
             <h3 style="text-align: center;"> Pilots Related to Teams </h3>
 
@@ -102,7 +106,7 @@
                         server_url: "bolt://localhost:7687",
                         server_user: "neo4j",
                         server_password: "SEAA",
-                        server_database: "formula1",
+                        server_database: "myformula1",
                         arrows: true,
                         hierarchical: true,
                         labels: {
@@ -145,11 +149,11 @@
 
         </div>
 
-        <div id="TDT" class="w3-container w3-border teams" style="display:none">
+        <div id="QDTT" class="w3-container w3-border teams" style="display:none">
             <br>
             <h3 style="text-align: center;"> Delete Team </h3>
 
-            <form method="POST" action="/teams/delete">
+            <form method="POST" action="/myteams/delete">
                 <label> Team Name </label> <br>
                 <input type="text" name="name"> <br>
                 <br>
